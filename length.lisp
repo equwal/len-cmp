@@ -11,19 +11,24 @@
 #+5am (5am:test null0 (5am:is-true (and (= 1 (null0 '(1)))
                                         (= 0 (null0 nil)))))
 
-(defgeneric len (a b &optional predicate)
-  (:documentation "Compare length in a variety of efficient ways."))
+(defun len (a b &optional predicate)
+  "Compare length in a variety of efficient ways."
+  (let ((predicate (if predicate predicate #'=)))
+    (if (integerp a)
+        (len-int a b predicate)
+        (len-list a b predicate))))
 
-(defmethod len ((a integer) (b list) &optional (predicate #'=))
-  ;; (declare (ftype (function ((integer 0 *) (integer 0 *)) t) predicate))
+(defun len-int (a b predicate)
+  (declare (integer a)
+           ((or null cons) b))
   (if (or (= 0 a) (null b))
       (funcall predicate a (null0 b))
-      (len (1- a) (cdr b))))
+      (len-int (1- a) (cdr b) predicate)))
 
-(defmethod len ((a list) (b list) &optional (predicate #'=))
-  ;; (declare (ftype (function ((integer 0 *) (integer 0 *)) t) predicate))
+(defun len-list (a b predicate)
+  (declare ((or null cons) a b))
   (if (and a b)
-      (len (cdr a) (cdr b) predicate)
+      (len-list (cdr a) (cdr b) predicate)
       (funcall predicate (null0 a) (null0 b))))
 
 #+5am (5am:test len-list (5am:is-true (and (len '(1) '(1 2) #'<)
