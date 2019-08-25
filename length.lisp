@@ -42,11 +42,3 @@
                                           (len 0 nil)
                                           (not (len 1 '(1 2)))
                                           (not (len 1 nil)))))
-(defun benchmark (fastp)
-  (labels ((range (from to val)
-             (loop for x from from to to
-                   collect val)))
-    (let ((range (range 0 10000000 nil))) ;; 10 million item list of nil
-      (null (time (if fastp
-                      (len range '(1))
-                      (length range)))))))
