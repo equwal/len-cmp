@@ -1,7 +1,8 @@
+(in-package :cl-user)
 (defpackage #:len-cmp
   (:use #:cl)
   (:export :len))
-
+(in-package :len-cmp)
 
 ;;;; An attempt to define an efficient length comparator.
 #+5am (5am:def-suite length-tests :description "Test length functions.")
