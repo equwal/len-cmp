@@ -1,8 +1,13 @@
+(defpackage #:len-cmp
+  (:use #:cl)
+  (:export :len))
+
+
 ;;;; An attempt to define an efficient length comparator.
 #+5am (5am:def-suite length-tests :description "Test length functions.")
 #+5am (5am:in-suite length-tests)
 
-(in-package :cl-user)
+(in-package :len-cmp)
 
 (defun null0 (list)
   "Normalize a list variable to be numeric for length computation."
