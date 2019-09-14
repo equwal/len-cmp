@@ -13,7 +13,6 @@ The only external function is `len`.
 (len 3 '(1 2 3) #'/=) ;=> NIL
 #+END_SRC
 * Complexity
-Comparing the length of some lists with lengths in *L* is O(sum(*L*)) .
-
+Comparing the length of some lists with lengths in *L* is O(sum(*L*)).
 With a short-circuit length comparsion, the worst case scenario is the same, 
 with the best case O(1) and average case of O(min(*L*)).
