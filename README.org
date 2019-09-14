@@ -1,6 +1,7 @@
 #+TITLE: Length Comparison
 #+AUTHOR: Spenser Truex
 #+EMAIL: web@spensertruex.com
+#+OPTIONS: tex:t
 * Purpose
 Provide /short-circuit/ length comparisons.
 * Usage
