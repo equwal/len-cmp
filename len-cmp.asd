@@ -1,4 +1,3 @@
-(in-package :asdf-user)
 (defsystem :len-cmp
   :name "len-cmp"
   :version      "0.0.1"

@@ -1,0 +1,53 @@
+% Created 2019-09-14 Sat 13:29
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Spenser Truex}
+\date{\today}
+\title{Length Comparison}
+\hypersetup{
+ pdfauthor={Spenser Truex},
+ pdftitle={Length Comparison},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.0.50 (Org mode 9.2.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Purpose}
+\label{sec:org3bdca94}
+Provide \emph{short-circuit} length comparisons.
+\section{Usage}
+\label{sec:org1c4a8ca}
+The only external function is `len`.
+\begin{verbatim}
+(len <integer or list> <list> &optional (<predicate> #'=))
+(len 3 '(1 2 3)) ;=> T
+(len '(a b c) '(1 2 3)) ;=> T
+(len 3 '(1 2 3) #'/=) ;=> NIL
+\end{verbatim}
+\section{Complexity}
+\label{sec:orgeab79b2}
+Comparing the length of some lists with lengths n\textsubscript{i} in \textbf{N} requires going
+across all of their elements.
+\begin{verbatim}
+\cal(\sum_{n=0}^{n-1}n_i)
+\end{verbatim}
+
+With a short-circuit length comparsion, the worst case scenario is the same, with the best case O(1) and average case O(min(N)).
+\end{document}
