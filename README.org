@@ -1,0 +1,23 @@
+#+TITLE: Length Comparison
+#+AUTHOR: Spenser Truex
+#+EMAIL: web@spensertruex.com
+* Purpose
+Provide /short-circuit/ length comparisons.
+* Usage
+The only external function is `len`.
+#+BEGIN_SRC common-lisp
+(len <integer or list> <list> &optional (<predicate> #'=))
+(len 3 '(1 2 3)) ;=> T
+(len '(a b c) '(1 2 3)) ;=> T
+(len 3 '(1 2 3) #'/=) ;=> NIL
+#+END_SRC
+* Complexity
+  Comparing the length of some lists with lengths n_i in *N* requires going
+  across all of their elements.
+\begin{equation}
+O(\sum{}_{n=0}^{n-1}n_i)
+\end{equation}
+
+With a short-circuit length comparsion, the worst case scenario is the same,
+with the best case \begin{equation}O(1)\end{equation} and average case
+\begin{equation}O(\min{N})\end{equation}.
