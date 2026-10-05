@@ -5,5 +5,5 @@
   :description  "Efficient comparison of length."
   :author       "Spenser Truex <web@spensertruex.com>"
   :serial       t
-  :license      "GNU GPL v3"
+  :license      "LicenseRef-CCAI-1.0"
   :components ((:file "length")))
